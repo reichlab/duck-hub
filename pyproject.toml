@@ -1,0 +1,38 @@
+[project]
+name = 'bucket_hub'
+description = 'Python app to play with cloud-based Hubverse data'
+license = {text = 'MIT License'}
+readme = 'README.md'
+requires-python = '>=3.12'
+classifiers = [
+    'Programming Language :: Python :: 3',
+    'License :: OSI Approved :: MIT License',
+]
+dynamic = ['version']
+
+dependencies = [
+    'structlog',
+    'rich',
+]
+
+[project.optional-dependencies]
+dev = [
+    'coverage',
+    'mypy',
+    'pytest',
+    'ruff',
+]
+
+[build-system]
+# Minimum requirements for the build system to execute.
+requires = ['setuptools', 'wheel']
+
+[tools.setuptools]
+packages = ['bucket_hub']
+
+[tool.ruff]
+line-length = 120
+lint.extend-select = ['I', 'Q']
+
+[tool.setuptools.dynamic]
+version = {attr = 'bucket_hub.__version__'}
