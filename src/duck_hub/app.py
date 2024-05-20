@@ -4,7 +4,7 @@ from importlib import resources
 import structlog
 from rich import print
 
-from bucket_hub.util.db import get_db_connection
+from duck_hub.util.db import get_db_connection
 
 logger = structlog.get_logger()
 
@@ -13,7 +13,7 @@ DATABASE_NAME = "bsweger-flusight.db"
 
 def main():
     # janky way to get a path to the db file
-    data_location = str(resources.files("bucket_hub").parent.parent / "data" / DATABASE_NAME)
+    data_location = str(resources.files("duck_hub").parent.parent / "data" / DATABASE_NAME)
     logger.info("connecting to DuckDB database", db_file=data_location)
 
     # con = get_db_connection(str(data_location))

@@ -1,5 +1,5 @@
 [project]
-name = "bucket_hub"
+name = "duck_hub"
 description = "Python app to play with cloud-based Hubverse data"
 license = {text = "MIT License"}
 readme = "README.md"
@@ -33,7 +33,7 @@ dev = [
 requires = ["setuptools", "wheel"]
 
 [tools.setuptools]
-packages = ["bucket_hub"]
+packages = ["duck_hub"]
 
 [tool.ruff]
 line-length = 120
@@ -45,4 +45,4 @@ extend-select = ["F", "I"]
 quote-style = "double"
 
 [tool.setuptools.dynamic]
-version = {attr = "bucket_hub.__version__"}
+version = {attr = "duck_hub.__version__"}

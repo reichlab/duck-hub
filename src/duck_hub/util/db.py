@@ -3,7 +3,7 @@ import duckdb
 """
 
 Created duckdb file via duckdb cli:
-duckdb ~/code/bucket_hub/data/bsweger-flusight.db
+duckdb ~/code/duck_hub/data/bsweger-flusight.db
 #
 # Need the httpfs plugin to read from s3
 # INSTALL httpfs;
