@@ -7,7 +7,7 @@ Experimenal project to explore the possibilites of cloud-based Hubverse data.
 ### Pre-requisites
 
 - Python 3.12+
-- [uv](https://pypi.org/project/uv/): to quickly resolve dependencies and install them into the project's virtual environment
+- [uv](https://pypi.org/project/uv/): to quickly resolve dependencies and install them into the project's virtual environment (quickest way to get started with uv: `pip install uv`)
 
 ### Setup
 
@@ -21,7 +21,7 @@ Experimenal project to explore the possibilites of cloud-based Hubverse data.
     On MacOS and Linux:
    ```bash
    source .venv/bin/activate
-   ``` 
+   ```
 
    On Windows:
    ```bash
