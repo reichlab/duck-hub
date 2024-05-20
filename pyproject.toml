@@ -40,6 +40,7 @@ line-length = 120
 
 [tool.ruff.lint]
 extend-select = ["F", "I"]
+inline-quotes = "double"
 
 [tool.ruff.format]
 quote-style = "double"

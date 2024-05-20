@@ -41,3 +41,10 @@ Experimenal project to explore the possibilites of cloud-based Hubverse data.
     ```bash
     pytest
     ```
+
+## Running the DuckDB example
+
+From the root of the project:
+```bash
+python src/duck_hub/app.py
+```
