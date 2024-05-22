@@ -1,4 +1,8 @@
+from cloudpathlib import S3Path, AnyPath
 import duckdb
+import structlog
+
+logger = structlog.get_logger()
 
 """
 
@@ -20,7 +24,29 @@ SELECT * FROM read_parquet('s3://bsweger-flusight-forecast/model-output/*/*.parq
 
 """
 
+def create_hub_database(hub_bucket_name: str, db_path: str, db_name: str) -> str:
+    db_file = AnyPath(db_path) / db_name
 
-def get_db_connection(db_file: str = "../../../data/bsweger-flusight.db"):
+    if db_file.is_file():
+        logger.warning('Database not created, file already exists', file=str(db_file))
+        return
+
+    hub_bucket = S3Path(f's3://{hub_bucket_name}')
+    hub_model_output = hub_bucket / 'model-output'
+
+    with duckdb.connect(str(db_file)) as con:
+        con.sql('INSTALL httpfs;')
+        con.sql('SET http_keep_alive=false;')
+        con.sql(f"""
+            CREATE TABLE model_output AS
+            SELECT * FROM read_parquet('{str(hub_model_output)}/*/*.parquet', filename=true, union_by_name=true);
+        """)
+        con.table('model_output').show()
+        logger.info('Created DuckDB database', db_file=str(db_file), num_rows=con.table('model_output').count('round_id').fetchall()[0][0])
+
+    return str(db_file)
+
+
+def get_db_connection(db_file: str = '../../../data/bsweger-flusight.db'):
     con = duckdb.connect(db_file, read_only=True)
     return con

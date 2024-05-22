@@ -11,8 +11,9 @@ classifiers = [
 dynamic = ["version"]
 
 dependencies = [
+    "cloudpathlib[S3]",
     "duckdb",
-    "ibis",
+    "ibis-framework[duckdb]",
     "pandas",
     "polars",
     "pyarrow",
